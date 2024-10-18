@@ -63,6 +63,8 @@ The article I provided on cryptocurrency and its significance was written based 
 
 </details>
 
+## Getting Started
+
 1. [linux_details.sh](Script/linux_details.sh): 
 
 <details>
