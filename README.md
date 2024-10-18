@@ -65,7 +65,7 @@ The article I provided on cryptocurrency and its significance was written based 
 
 ## Getting Started
 
-1. [linux_details.sh](Script/linux_details.sh): 
+1. [Bitcoin.py](CryptoTracker/Bitcoin.py): 
 
 <details>
 <summary>Python Aode Analysis</summary>
@@ -73,7 +73,7 @@ The article I provided on cryptocurrency and its significance was written based 
 </details>
 <hr>
 
-2. [linux_details.sh](Script/linux_details.sh): 
+2. [BitcoinAnalyzer_lost_one_week.py](CryptoTracker/BitcoinAnalyzer_lost_one_week.py): 
 
 <details>
 <summary>Python Aode Analysis</summary>
@@ -81,7 +81,7 @@ The article I provided on cryptocurrency and its significance was written based 
 </details>
 <hr>
 
-3. [linux_details.sh](Script/linux_details.sh): 
+3. [EtherTetherPrice.py](CryptoTracker/EtherTetherPrice.py): 
 
 <details>
 <summary>Python Aode Analysis</summary>
