@@ -104,10 +104,58 @@ print(f'Bitcoin price: ${price}')
 </details>
 <hr>
 
-2. [BitcoinAnalyzer_lost_one_week.py](CryptoTracker/BitcoinAnalyzer_lost_one_week.py): 
+2. [BitcoinAnalyzer_lost_one_week.py](CryptoTracker/BitcoinAnalyzer_lost_one_week.py): This Python script retrieves Bitcoin price data for the past week using the CoinGecko API. It then extracts the price values and timestamps from the API response, converting the timestamps to a readable date format. Finally, it uses matplotlib to plot a line graph showing the Bitcoin price trends over the last seven days.
 
 <details>
 <summary>Python Aode Analysis</summary>
+This Python script provides a visual representation of Bitcoin’s price fluctuations over the last week by fetching data from CoinGecko's API and plotting it using matplotlib. The script consists of three main parts: fetching the data, processing it, and visualizing the results.
+
+## Fetching Data:
+The script sends a request to the CoinGecko API using the requests library. It retrieves Bitcoin's market data over the past seven days with prices in USD. The API call's parameters specify the currency (vs_currency=usd) and the time range (days=7). Upon receiving the response, the data is extracted and converted into a Python dictionary using the .json() method, making it easy to access the relevant information.
+
+## Parsing the Data:
+The API response provides prices as a list of timestamp-price pairs. The timestamps are in Unix time (milliseconds), so they are converted into a human-readable format using datetime.fromtimestamp() while dividing by 1000 (to convert from milliseconds to seconds). The prices and their corresponding dates are stored in two separate lists: timestamps and values. These lists will be used to create the graph.
+
+## Visualizing the Data:
+The script uses the matplotlib library to generate a line plot of Bitcoin’s price changes. The x-axis displays the dates, and the y-axis represents the price in USD. The plot is styled with circle markers to denote individual price points, and the xticks(rotation=45) function ensures the dates are properly rotated for clarity. A grid is also added to make the price points more readable, and plt.tight_layout() optimizes the display, ensuring all elements fit neatly within the plot area.
+
+## Use Cases:
+The script can be useful for cryptocurrency traders, analysts, or enthusiasts who want to monitor Bitcoin’s price trends over the past week. It provides a visual summary of price changes, making it easier to spot trends, spikes, or dips. Additionally, the code can be modified to track other cryptocurrencies or to extend the time period by adjusting the API parameters.
+
+## Python code
+```python
+import requests
+import matplotlib.pyplot as plt
+from datetime import datetime, timedelta
+
+# API settings to get Bitcoin prices
+API_URL = "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart"
+params = {
+    'vs_currency': 'usd',
+    'days': '7',  # For one week
+}
+
+# Fetch the data
+response = requests.get(API_URL, params=params)
+data = response.json()
+
+# Extract prices and timestamps
+prices = data['prices']
+timestamps = [datetime.fromtimestamp(price[0] / 1000) for price in prices]  # Convert milliseconds to datetime
+values = [price[1] for price in prices]
+
+# Plotting the chart
+plt.figure(figsize=(10, 5))
+plt.plot(timestamps, values, marker='o', linestyle='-', color='blue')
+plt.title('Bitcoin Price Over the Last Week')
+plt.xlabel('Date')
+plt.ylabel('Price in USD')
+plt.xticks(rotation=45)
+plt.grid()
+plt.tight_layout()
+plt.show()
+```
+
 
 </details>
 <hr>
