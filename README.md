@@ -161,9 +161,100 @@ plt.show()
 <hr>
 
 3. [EtherTetherPrice.py](CryptoTracker/EtherTetherPrice.py): 
+This Python script fetches the current prices of Bitcoin, Ethereum, and Tether in USD from the CoinGecko API. It checks the response status and, if successful, extracts and displays the prices in a readable format. In case of an error, it prints the status code to indicate the issue with the API request.
 
 <details>
 <summary>Python Aode Analysis</summary>
+The provided Python script effectively retrieves and displays the current prices of Bitcoin, Ethereum, and Tether in USD using the CoinGecko API. Below is a detailed breakdown of the code, its functionality, and its potential applications.<br>
+ 
+1. ibrary Imports:
+ The script starts by importing two essential libraries: requests and json.
+ The requests library is used to send HTTP requests to external APIs, while the json library is crucial for handling the JSON format returned by the API.
+
+2. Function Definition:
+ The core functionality of the script is encapsulated in the get_crypto_prices() function. This promotes modular programming, allowing for easier maintenance and testing.
+
+3. API Endpoint:
+ The URL defined in the script points to the CoinGecko API endpoint, specifically designed to fetch current prices for multiple cryptocurrencies in a specified currency (in this case, USD).
+ By requesting prices for Bitcoin, Ethereum, and Tether, the script focuses on three major players in the cryptocurrency market.
+
+4. Sending the Request:
+ The code sends a GET request to the defined API URL using requests.get(url). This initiates communication with the CoinGecko server to retrieve the latest price data.
+
+5. Response Status Checking:
+ The script checks the response status code using response.status_code. A status code of 200 indicates a successful request, while any other status code indicates an error in fetching  data.
+ This error-handling mechanism is crucial for robust applications, ensuring that the user is informed about any issues.
+
+6. JSON Data Parsing:
+ When the response is successful, the script converts the JSON data into a Python dictionary using json.loads(response.text).
+ This step is essential for extracting specific values (the prices of the cryptocurrencies) from the structured JSON response.
+
+7. Data Extraction:
+ The script extracts the prices of Bitcoin, Ethereum, and Tether from the parsed JSON dictionary. Each price is stored in a separate variable for ease of use and clarity.
+
+8. Displaying Prices:
+ The extracted prices are then printed to the console in a user-friendly format. This output allows users to quickly see the current market prices of these cryptocurrencies.
+
+9. Potential Enhancements:
+ Future improvements could include implementing additional error handling for network-related issues or JSON decoding errors.
+ The script could also be enhanced to allow users to input their preferred cryptocurrencies or currencies for conversion, increasing its versatility.
+
+10. Use Cases:
+ This script can be utilized by cryptocurrency traders and investors for quick access to current prices, aiding in making informed trading decisions. 
+ It can also serve as a foundational component for more complex applications, such as portfolio management tools or trading bots.
+
+11. Integration Opportunities:
+ The functionality of this script can be integrated into websites or mobile applications to provide users with real-time cryptocurrency pricing data.
+ It could also be incorporated into data analysis pipelines for cryptocurrency market research or historical trend analysis.
+
+12. Limitations:
+ The script only fetches the latest prices and does not store historical data, which may be a limitation for users seeking to analyze price trends over time.
+ Additionally, the API has rate limits, which could restrict the frequency of requests if used excessively.
+
+13. Conclusion:
+ In summary, this script serves as a practical and effective tool for accessing real-time cryptocurrency prices using the CoinGecko API.
+ Its clear structure and modular design make it easy to understand and extend, providing a solid foundation for further development.
+
+## Libraries and Data Source
+#### Libraries Used:
+requests: For sending HTTP requests to the CoinGecko API.
+json: For parsing and manipulating JSON data received from the API.
+#### Data Source:
+The script fetches price data from the CoinGecko API, specifically using the endpoint:<br>
+https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether&vs_currencies=usd.
+
+## Python Code
+```python
+import requests
+import json
+
+def get_crypto_prices():
+    # URL of the CoinGecko API to get the prices
+    url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether&vs_currencies=usd'
+
+    # Sending request to the API and fetching the data
+    response = requests.get(url)
+
+    # Checking the status of the response
+    if response.status_code == 200:
+        # Converting the JSON data to a Python dictionary
+        data = json.loads(response.text)
+
+        # Extracting the prices
+        bitcoin_price = data['bitcoin']['usd']
+        ethereum_price = data['ethereum']['usd']
+        tether_price = data['tether']['usd']
+
+        # Displaying the prices
+        print(f"Bitcoin Price: ${bitcoin_price}")
+        print(f"Ethereum Price: ${ethereum_price}")
+        print(f"Tether Price: ${tether_price}")
+    else:
+        print(f"Error fetching data. Status code: {response.status_code}")
+
+# Running the program
+get_crypto_prices()
+```
 
 </details>
 <hr>
