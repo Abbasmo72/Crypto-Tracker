@@ -65,10 +65,41 @@ The article I provided on cryptocurrency and its significance was written based 
 
 ## Getting Started
 
-1. [Bitcoin.py](CryptoTracker/Bitcoin.py): 
+1. [Bitcoin.py](CryptoTracker/Bitcoin.py): This Python script retrieves the current price of Bitcoin in USD using the CoinGecko API. It sends an HTTP GET request to the API, parses the JSON response, and extracts the Bitcoin price. Finally, it displays the Bitcoin price in USD using a formatted print statement.
 
 <details>
 <summary>Python Aode Analysis</summary>
+The given Python script is designed to retrieve and display the current price of Bitcoin in USD. The code utilizes the requests library to make a GET request to the CoinGecko API, a reliable source for cryptocurrency data.
+ 
+## Breakdown of the Code:
+1. API Request: The script defines a function get_bitcoin_price() that sends an HTTP request to the CoinGecko API using the provided URL. The URL includes a query for the price of Bitcoin in USD.
+2. Response Handling: Once the request is made, the response from the API is checked and parsed as JSON. The script extracts the value of Bitcoin from the returned JSON object using the key 'bitcoin', followed by the nested key 'usd'.
+3. Display: After the price is retrieved, it is stored in the variable price and then printed in a formatted string, displaying the Bitcoin price with the dollar sign.
+ 
+## Usage:
+This script is useful for getting real-time data on Bitcoin's price and can be integrated into a broader cryptocurrency monitoring tool. It allows users to stay updated on market fluctuations by fetching live data.
+
+## Python Code
+```python
+import requests
+
+def get_bitcoin_price():
+    # URL of CoinGecko API to get Bitcoin price in USD
+    url = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"
+    
+    # Sending a request to the API and getting the response
+    response = requests.get(url)
+    
+    # Parsing the JSON response
+    data = response.json()
+    
+    # Returning the Bitcoin price in USD
+    return data['bitcoin']['usd']
+
+# Displaying the Bitcoin price in USD
+price = get_bitcoin_price()
+print(f'Bitcoin price: ${price}')
+```
 
 </details>
 <hr>
