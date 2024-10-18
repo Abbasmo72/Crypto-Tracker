@@ -63,8 +63,6 @@ The article I provided on cryptocurrency and its significance was written based 
 
 </details>
 
-## Small projects
-
 1. [linux_details.sh](Script/linux_details.sh): 
 
 <details>
@@ -73,9 +71,7 @@ The article I provided on cryptocurrency and its significance was written based 
 </details>
 <hr>
 
-## Small projects
-
-1. [linux_details.sh](Script/linux_details.sh): 
+2. [linux_details.sh](Script/linux_details.sh): 
 
 <details>
 <summary>Python Aode Analysis</summary>
@@ -83,9 +79,7 @@ The article I provided on cryptocurrency and its significance was written based 
 </details>
 <hr>
 
-## Small projects
-
-1. [linux_details.sh](Script/linux_details.sh): 
+3. [linux_details.sh](Script/linux_details.sh): 
 
 <details>
 <summary>Python Aode Analysis</summary>
@@ -93,15 +87,7 @@ The article I provided on cryptocurrency and its significance was written based 
 </details>
 <hr>
 
-## Small projects
 
-1. [linux_details.sh](Script/linux_details.sh): 
-
-<details>
-<summary>Python Aode Analysis</summary>
-
-</details>
-<hr>
 
 ## License
 
