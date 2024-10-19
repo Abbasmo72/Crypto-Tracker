@@ -111,7 +111,7 @@ print(f'Bitcoin price: ${price}')
 </details>
 <hr>
 
-2. [BitcoinAnalyzer_lost_one_week.py](CryptoTracker/BitcoinAnalyzer_lost_one_week.py): This Python script retrieves Bitcoin price data for the past week using the CoinGecko API. It then extracts the price values and timestamps from the API response, converting the timestamps to a readable date format. Finally, it uses matplotlib to plot a line graph showing the Bitcoin price trends over the last seven days.
+2. [Bitcoin Analyzer lost one week.py](CryptoTracker/BitcoinAnalyzer_lost_one_week.py): This Python script retrieves Bitcoin price data for the past week using the CoinGecko API. It then extracts the price values and timestamps from the API response, converting the timestamps to a readable date format. Finally, it uses matplotlib to plot a line graph showing the Bitcoin price trends over the last seven days.
 
 <details>
 <summary>Python Aode Analysis</summary>
@@ -167,7 +167,7 @@ plt.show()
 </details>
 <hr>
 
-3. [EtherTetherPrice.py](CryptoTracker/EtherTetherPrice.py): 
+3. [Ether Tether Bitcoin Price.py](CryptoTracker/EtherTetherPrice.py): 
 This Python script fetches the current prices of Bitcoin, Ethereum, and Tether in USD from the CoinGecko API. It checks the response status and, if successful, extracts and displays the prices in a readable format. In case of an error, it prints the status code to indicate the issue with the API request.
 
 <details>
@@ -266,7 +266,7 @@ get_crypto_prices()
 </details>
 <hr>
 
-4. [warning E-mail.py](CryptoTracker/warningE-mail.py): 
+4. [warning Email.py](CryptoTracker/warningE-mail.py): 
 This Python script retrieves the current prices of Bitcoin and Ethereum using the CoinGecko API. If these prices fall below specified thresholds, the program sends email alerts to a predefined recipient. The script uses the requests library for API calls and smtplib for sending emails through Gmail’s SMTP server.
 
 <details>
@@ -319,6 +319,72 @@ Ethereum Price: $X,XXX
    
 ## Conclusion:
 This script serves as a simple but effective price alert tool for cryptocurrency enthusiasts or traders. It regularly checks the prices of Bitcoin and Ethereum and notifies the user via email when their prices fall below critical levels. By using free API services like CoinGecko and standard email protocols, this script is a convenient way to stay updated on market movements without manual checking.
+
+### Python Code
+```python
+import requests
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+# CoinGecko API URL to get cryptocurrency prices
+API_URL = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd'
+
+# Alert parameters
+ALERT_PRICE_BITCOIN = 30000  # Bitcoin price alert threshold
+ALERT_PRICE_ETHEREUM = 2000   # Ethereum price alert threshold
+
+# Email settings
+SENDER_EMAIL = 'your_email@gmail.com'
+SENDER_PASSWORD = 'your_email_password'
+RECEIVER_EMAIL = 'receiver_email@gmail.com'
+SMTP_SERVER = 'smtp.gmail.com'
+SMTP_PORT = 587
+
+# Function to send email
+def send_email(subject, message):
+    msg = MIMEMultipart()
+    msg['From'] = SENDER_EMAIL
+    msg['To'] = RECEIVER_EMAIL
+    msg['Subject'] = subject
+    msg.attach(MIMEText(message, 'plain'))
+
+    try:
+        # Set up the server connection
+        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+        server.starttls()
+        server.login(SENDER_EMAIL, SENDER_PASSWORD)
+
+        # Send the email
+        text = msg.as_string()
+        server.sendmail(SENDER_EMAIL, RECEIVER_EMAIL, text)
+        server.quit()
+        print('Email sent successfully!')
+    except Exception as e:
+        print(f"Failed to send email: {e}")
+
+# Function to check prices and send alert
+def check_prices():
+    response = requests.get(API_URL)
+    data = response.json()
+
+    # Extract prices
+    bitcoin_price = data['bitcoin']['usd']
+    ethereum_price = data['ethereum']['usd']
+
+    print(f"Bitcoin Price: ${bitcoin_price}")
+    print(f"Ethereum Price: ${ethereum_price}")
+
+    # Check if the prices meet alert conditions
+    if bitcoin_price < ALERT_PRICE_BITCOIN:
+        send_email('Bitcoin Price Alert', f'Bitcoin price is below ${ALERT_PRICE_BITCOIN}. Current price: ${bitcoin_price}')
+
+    if ethereum_price < ALERT_PRICE_ETHEREUM:
+        send_email('Ethereum Price Alert', f'Ethereum price is below ${ALERT_PRICE_ETHEREUM}. Current price: ${ethereum_price}')
+
+# Run the program
+check_prices()
+```
 
 
 
