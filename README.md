@@ -2,7 +2,7 @@
 
 # Crypto Tracker
 
-<img src="https://media.tenor.com/y0SIaspW0E8AAAAM/cyberhornet-nest.gif" height="200px" width="500px">
+<img src="https://media.tenor.com/y0SIaspW0E8AAAAM/cyberhornet-nest.gif" height="100px" width="500px">
 </div>
 
 <hr>
@@ -320,7 +320,7 @@ Ethereum Price: $X,XXX
 ## Conclusion:
 This script serves as a simple but effective price alert tool for cryptocurrency enthusiasts or traders. It regularly checks the prices of Bitcoin and Ethereum and notifies the user via email when their prices fall below critical levels. By using free API services like CoinGecko and standard email protocols, this script is a convenient way to stay updated on market movements without manual checking.
 
-### Python Code
+## Python Code
 ```python
 import requests
 import smtplib
