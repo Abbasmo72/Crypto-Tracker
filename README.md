@@ -4,12 +4,14 @@
 
 <img src="https://media.tenor.com/y0SIaspW0E8AAAAM/cyberhornet-nest.gif" height="150px" width="500px">
 </div>
-
 <hr>
+
+## About Crypto
+
 In this section, I will include small programs that work with digital currencies. These programs include the price of digital currencies and the price growth chart, etc. In the following, I will explain each of the small Python projects separately and how I will also explain its use and it is also useful for beginners to start learning. This project is under development and every now and then I try to add a new file to it.
 
 <details>
-<summary><b>About Crypto</b></summary>
+<summary><b>More</b></summary>
 
 Cryptocurrency, often referred to as digital or virtual currency, represents a fundamental shift in the world of finance. Unlike traditional money issued by governments (fiat currency), cryptocurrencies operate on decentralized networks based on blockchain technology. Blockchain is a distributed ledger that records all transactions across a network of computers, ensuring transparency, security, and immutability. These features make cryptocurrencies unique, offering new opportunities and challenges to global economic systems.
 
