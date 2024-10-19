@@ -2,7 +2,7 @@
 
 # Crypto Tracker
 
-<img src="https://media.tenor.com/y0SIaspW0E8AAAAM/cyberhornet-nest.gif" height="100px" width="500px">
+<img src="https://media.tenor.com/y0SIaspW0E8AAAAM/cyberhornet-nest.gif" height="150px" width="500px">
 </div>
 
 <hr>
