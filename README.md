@@ -266,8 +266,67 @@ get_crypto_prices()
 </details>
 <hr>
 
+4. [warning E-mail.py](CryptoTracker/warningE-mail.py): 
+This Python script retrieves the current prices of Bitcoin and Ethereum using the CoinGecko API. If these prices fall below specified thresholds, the program sends email alerts to a predefined recipient. The script uses the requests library for API calls and smtplib for sending emails through Gmail’s SMTP server.
+
+<details>
+<summary>Python Aode Analysis</summary>
+ 
+## Code Breakdown:
+
+1. Library Imports:
+ - <b>requests:</b> Used to send an HTTP request to the CoinGecko API to get the latest cryptocurrency prices.
+ - <b>smtplib:</b> Handles email communication over the SMTP protocol.
+ - <b>MIMEText</b> and <b>MIMEMultipart:</b> Used to create the structure of the email (subject, body, and recipients).
+
+2. CoinGecko API URL & Parameters:
+ - The API URL is set to CoinGecko’s endpoint for retrieving simple cryptocurrency prices in USD for Bitcoin and Ethereum.
+ - Parameters like ALERT_PRICE_BITCOIN (set to $30,000) and ALERT_PRICE_ETHEREUM (set to $2,000) are used to trigger alerts when the prices fall below these values.
+
+3. Email Configuration:
+ - Variables such as SENDER_EMAIL, SENDER_PASSWORD, and RECEIVER_EMAIL are defined to configure the sender and receiver of the email alerts.
+ - Gmail’s SMTP server (smtp.gmail.com) and port 587 are used for email transmission, which is common for TLS-encrypted connections.
+
+4. send_email Function:
+   - This function constructs and sends an email when called.
+   - It uses MIMEMultipart to structure the email and attaches a plain text message body using MIMEText.
+   - The email is sent through Gmail’s SMTP server using TLS encryption for secure transmission.
+   - If the email is successfully sent, the function prints "Email sent successfully!" Otherwise, it catches and displays any errors that occur.
+
+5. check_prices Function:
+ - This function makes an API call to CoinGecko using the requests library.
+ - It extracts the current prices of Bitcoin and Ethereum from the JSON response.
+ - The prices are displayed in the console for informational purposes.
+ - If Bitcoin’s price is below $30,000, the send_email function is called to alert the user.
+ - Similarly, if Ethereum’s price is below $2,000, another alert email is sent.
+
+6. Program Flow:
+ - The script begins by calling the check_prices function.
+ - It fetches the cryptocurrency prices and checks whether they meet the alert conditions.
+ - If any conditions are met, email alerts are sent to the specified recipient.
+   
+## Step-by-Step Execution:
+1. The program starts by fetching Bitcoin and Ethereum prices from the CoinGecko API.
+2. It parses the response to extract USD prices for both cryptocurrencies.
+3. The prices are printed on the console as feedback to the user:
+```python
+Bitcoin Price: $XX,XXX
+Ethereum Price: $X,XXX
+```
+4. If Bitcoin’s price drops below $30,000, an email alert is triggered with the subject "Bitcoin Price Alert" and the current price.
+5. If Ethereum’s price falls below $2,000, another email alert is triggered for Ethereum.
+6. The program prints a success message if emails are sent successfully or an error message if any issues arise.
+   
+## Conclusion:
+This script serves as a simple but effective price alert tool for cryptocurrency enthusiasts or traders. It regularly checks the prices of Bitcoin and Ethereum and notifies the user via email when their prices fall below critical levels. By using free API services like CoinGecko and standard email protocols, this script is a convenient way to stay updated on market movements without manual checking.
 
 
+
+
+
+
+</details>
+<hr>
 ## License
 
 MIT
