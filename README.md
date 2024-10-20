@@ -395,14 +395,78 @@ check_prices()
 
 <details>
 <summary>Python Aode Analysis</summary>
- 
 
+ ### Detailed Analysis:
+This Python script monitors the prices of cryptocurrencies, specifically Bitcoin and Ethereum, and sends alerts via SMS when their prices fall below a certain threshold. The code leverages two key services: CoinGecko API for fetching real-time cryptocurrency prices and Twilio API for sending SMS alerts.
+
+### Key Components:
+1. <b>CoinGecko API:</b> The script interacts with the CoinGecko API to retrieve the current prices of Bitcoin and Ethereum in USD. The URL https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd fetches the required price data in JSON format.
+2. <b>Twilio API:</b> The script uses the Twilio API to send SMS alerts to a specific phone number when the price of either Bitcoin or Ethereum drops below a predefined threshold. Twilio credentials, including TWILIO_SID, TWILIO_AUTH_TOKEN, and TWILIO_PHONE_NUMBER, must be replaced with actual account information for the SMS feature to work.
+
+### Code Breakdown:
+1. <b>Alert Parameters:</b> The script defines thresholds (ALERT_PRICE_BITCOIN = 30000 and ALERT_PRICE_ETHEREUM = 2000) that act as triggers for sending SMS alerts if prices fall below these values.
+2. <b>Twilio SMS Function:</b> The send_sms() function is responsible for sending an SMS using Twilio. It takes a message as input, which is then sent from the Twilio number to the recipient's phone number. The function prints the message ID (message.sid) after successful delivery.
+3. <b>Price Check Logic:</b> The check_prices_with_sms() function fetches the latest prices of Bitcoin and Ethereum from the CoinGecko API. After retrieving and parsing the JSON response, the prices are compared against the alert thresholds. If the prices are lower than the predefined values, the send_sms() function is called to send a notification.
+4. <b>Execution:</b> The script runs the check_prices_with_sms() function, continuously monitoring the cryptocurrency prices and sending alerts when necessary.
+
+### Use Cases:
+- Price Monitoring: This code can be used by cryptocurrency traders or enthusiasts who want to keep an eye on market prices without constantly checking them manually.
+- Real-time Alerts: The SMS alerts provide real-time updates, ensuring that users are notified as soon as prices drop below their specified limits, allowing for timely decisions.
+
+This script is simple, yet effective for monitoring cryptocurrency prices and receiving alerts based on user-defined thresholds.
 
 ## Python Code
 ```python
+from twilio.rest import Client
+import requests
 
+# CoinGecko API URL to get cryptocurrency prices
+API_URL = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd'
+
+# Alert parameters
+ALERT_PRICE_BITCOIN = 30000  # Bitcoin price alert threshold
+ALERT_PRICE_ETHEREUM = 2000   # Ethereum price alert threshold
+
+# Twilio settings
+TWILIO_SID = 'your_twilio_sid'
+TWILIO_AUTH_TOKEN = 'your_twilio_auth_token'
+TWILIO_PHONE_NUMBER = 'your_twilio_phone_number'
+RECEIVER_PHONE_NUMBER = '+1234567890'
+
+# Function to send SMS
+def send_sms(message):
+    client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
+
+    # Create and send the message
+    message = client.messages.create(
+        body=message,
+        from_=TWILIO_PHONE_NUMBER,
+        to=RECEIVER_PHONE_NUMBER
+    )
+    print(f'SMS sent: {message.sid}')
+
+# Function to check prices and send SMS alert
+def check_prices_with_sms():
+    response = requests.get(API_URL)
+    data = response.json()
+
+    # Extract prices
+    bitcoin_price = data['bitcoin']['usd']
+    ethereum_price = data['ethereum']['usd']
+
+    print(f"Bitcoin Price: ${bitcoin_price}")
+    print(f"Ethereum Price: ${ethereum_price}")
+
+    # Check if the prices meet alert conditions
+    if bitcoin_price < ALERT_PRICE_BITCOIN:
+        send_sms(f'Bitcoin price is below ${ALERT_PRICE_BITCOIN}. Current price: ${bitcoin_price}')
+
+    if ethereum_price < ALERT_PRICE_ETHEREUM:
+        send_sms(f'Ethereum price is below ${ALERT_PRICE_ETHEREUM}. Current price: ${ethereum_price}')
+
+# Run the program
+check_prices_with_sms()
 ```
-
 
 </details>
 
