@@ -469,6 +469,7 @@ check_prices_with_sms()
 ```
 
 </details>
+<hr>
 
 ## License
 
