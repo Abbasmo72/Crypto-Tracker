@@ -2,8 +2,11 @@
 
 # Crypto Tracker
 
-<img src="https://media.tenor.com/y0SIaspW0E8AAAAM/cyberhornet-nest.gif" height="150px" width="500px">
+<img alt="Gif" src="https://media.tenor.com/y0SIaspW0E8AAAAM/cyberhornet-nest.gif" height="150px" width="500px">
 </div>
+<hr>
+
+[Click to see the descriptions in Persian language](Persian.md)
 <hr>
 
 ## About Crypto
