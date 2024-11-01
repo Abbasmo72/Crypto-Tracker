@@ -305,65 +305,62 @@ get_crypto_prices()
 </details>
 <hr>
 
-4. [warning Send Email](CryptoTracker/warningE-mail.py): 
-This Python script retrieves the current prices of Bitcoin and Ethereum using the CoinGecko API.
-If these prices fall below specified thresholds, the program sends email alerts to a predefined recipient.
-The script uses the requests library for API calls and smtplib for sending emails through Gmail’s SMTP server.
+4. [هشدارهای ایمیلی قیمت ](CryptoTracker/warningE-mail.py): این اسکریپت پایتون قیمت‌های فعلی بیت‌کوین و اتریوم را با استفاده از CoinGecko API بازیابی می‌کند. اگر این قیمت‌ها کمتر از آستانه‌های مشخص‌شده باشد، برنامه هشدارهای ایمیلی را به یک گیرنده از پیش تعریف‌شده ارسال می‌کند. این اسکریپت از کتابخانه درخواست‌ها برای تماس‌های API و smtplib برای ارسال ایمیل‌ها از طریق Gmail استفاده می‌کند. سرور SMTP.
 
 <details>
-<summary>Python Aode Analysis</summary>
+<summary>جزیه و تحلیل</summary>
  
-## Code Breakdown:
+## تفکیک کد:
 
-1. Library Imports:
- - <b>requests:</b> Used to send an HTTP request to the CoinGecko API to get the latest cryptocurrency prices.
- - <b>smtplib:</b> Handles email communication over the SMTP protocol.
- - <b>MIMEText</b> and <b>MIMEMultipart:</b> Used to create the structure of the email (subject, body, and recipients).
+1. واردات کتابخانه:
+ - <b>درخواست‌ها:</b> برای ارسال درخواست HTTP به CoinGecko API برای دریافت آخرین قیمت‌های ارزهای دیجیتال استفاده می‌شود.
+ - <b>smtplib:</b> ارتباط ایمیل را از طریق پروتکل SMTP مدیریت می کند.
+ - <b>MIMEText</b> و <b>MIMEMultipart:</b> برای ایجاد ساختار ایمیل (موضوع، متن، و گیرندگان) استفاده می‌شود.
 
-2. CoinGecko API URL & Parameters:
- - The API URL is set to CoinGecko’s endpoint for retrieving simple cryptocurrency prices in USD for Bitcoin and Ethereum.
- - Parameters like ALERT_PRICE_BITCOIN (set to $30,000) and ALERT_PRICE_ETHEREUM (set to $2,000) are used to trigger alerts when the prices fall below these values.
+2. URL و پارامترهای CoinGecko API:
+ - URL API برای بازیابی قیمت ارزهای دیجیتال ساده به دلار برای بیت کوین و اتریوم روی نقطه پایانی CoinGecko تنظیم شده است.
+ - پارامترهایی مانند ALERT_PRICE_BITCOIN (تنظیم شده روی 30000 دلار) و ALERT_PRICE_ETHEREUM (تنظیم روی 2000 دلار) برای فعال کردن هشدارها زمانی که قیمت‌ها به زیر این مقادیر می‌رسند استفاده می‌شوند.
 
-3. Email Configuration:
- - Variables such as SENDER_EMAIL, SENDER_PASSWORD, and RECEIVER_EMAIL are defined to configure the sender and receiver of the email alerts.
- - Gmail’s SMTP server (smtp.gmail.com) and port 587 are used for email transmission, which is common for TLS-encrypted connections.
+3. پیکربندی ایمیل:
+ - متغیرهایی مانند SENDER_EMAIL، SENDER_PASSWORD و RECEIVER_EMAIL برای پیکربندی فرستنده و گیرنده هشدارهای ایمیل تعریف شده اند.
+ - سرور SMTP جیمیل (smtp.gmail.com) و پورت 587 برای انتقال ایمیل استفاده می شود که برای اتصالات رمزگذاری شده با TLS رایج است.
 
-4. send_email Function:
-   - This function constructs and sends an email when called.
-   - It uses MIMEMultipart to structure the email and attaches a plain text message body using MIMEText.
-   - The email is sent through Gmail’s SMTP server using TLS encryption for secure transmission.
-   - If the email is successfully sent, the function prints "Email sent successfully!" Otherwise, it catches and displays any errors that occur.
+4. تابع send_email:
+   - این تابع در هنگام فراخوانی یک ایمیل می سازد و ارسال می کند.
+   - از MIMEMultipart برای ساختار ایمیل استفاده می کند و یک متن پیام متنی ساده را با استفاده از MIMEText متصل می کند.
+   - ایمیل از طریق سرور SMTP Gmail با استفاده از رمزگذاری TLS برای انتقال ایمن ارسال می شود.
+   - اگر ایمیل با موفقیت ارسال شود، تابع چاپ "ایمیل با موفقیت ارسال شد!" در غیر این صورت، هر خطای رخ داده را می گیرد و نمایش می دهد.
 
-5. check_prices Function:
- - This function makes an API call to CoinGecko using the requests library.
- - It extracts the current prices of Bitcoin and Ethereum from the JSON response.
- - The prices are displayed in the console for informational purposes.
- - If Bitcoin’s price is below $30,000, the send_email function is called to alert the user.
- - Similarly, if Ethereum’s price is below $2,000, another alert email is sent.
+5. تابع check_prices:
+ - این تابع با استفاده از کتابخانه درخواست ها با CoinGecko تماس API برقرار می کند.
+ - قیمت های فعلی بیت کوین و اتریوم را از پاسخ JSON استخراج می کند.
+ - قیمت ها به منظور اطلاع رسانی در کنسول نمایش داده می شود.
+ - اگر قیمت بیت کوین زیر 30000 دلار باشد، تابع send_email برای هشدار به کاربر فراخوانی می شود.
+ - به طور مشابه، اگر قیمت اتریوم زیر 2000 دلار باشد، ایمیل هشدار دیگری ارسال می شود.
 
-6. Program Flow:
- - The script begins by calling the check_prices function.
- - It fetches the cryptocurrency prices and checks whether they meet the alert conditions.
- - If any conditions are met, email alerts are sent to the specified recipient.
+6. جریان برنامه:
+ - اسکریپت با فراخوانی تابع check_prices شروع می شود.
+ - قیمت ارزهای دیجیتال را دریافت می کند و بررسی می کند که آیا شرایط هشدار را برآورده می کنند یا خیر.
+ - در صورت رعایت هر یک از شرایط، هشدارهای ایمیل به گیرنده مشخص شده ارسال می شود.
    
-## Step-by-Step Execution:
-1. The program starts by fetching Bitcoin and Ethereum prices from the CoinGecko API.
-2. It parses the response to extract USD prices for both cryptocurrencies.
-3. The prices are printed on the console as feedback to the user:
+## اجرای گام به گام:
+1. برنامه با دریافت قیمت بیت کوین و اتریوم از API CoinGecko شروع می شود.
+2. پاسخ را برای استخراج قیمت دلار برای هر دو ارز دیجیتال تجزیه می کند.
+3. قیمت ها به عنوان بازخورد به کاربر روی کنسول چاپ می شود:
 ```python
 Bitcoin Price: $XX,XXX
 Ethereum Price: $X,XXX
 ```
-4. If Bitcoin’s price drops below $30,000, an email alert is triggered with the subject "Bitcoin Price Alert" and the current price.
-5. If Ethereum’s price falls below $2,000, another email alert is triggered for Ethereum.
-6. The program prints a success message if emails are sent successfully or an error message if any issues arise.
+4. اگر قیمت بیت کوین به زیر 30000 دلار کاهش یابد، یک هشدار ایمیل با موضوع "هشدار قیمت بیت کوین" و قیمت فعلی ایجاد می شود.
+5. اگر قیمت اتریوم به زیر 2000 دلار کاهش یابد، هشدار ایمیل دیگری برای اتریوم ایجاد می شود.
+6. در صورت ارسال موفقیت آمیز ایمیل ها، برنامه پیام موفقیت آمیز یا در صورت بروز هر گونه مشکل، پیام خطا را چاپ می کند.
    
-## Conclusion:
-This script serves as a simple but effective price alert tool for cryptocurrency enthusiasts or traders. 
-It regularly checks the prices of Bitcoin and Ethereum and notifies the user via email when their prices fall below critical levels. 
-By using free API services like CoinGecko and standard email protocols, this script is a convenient way to stay updated on market movements without manual checking.
+## نتیجه گیری:
+این اسکریپت به عنوان یک ابزار ساده اما موثر هشدار قیمت برای علاقه مندان یا معامله گران ارزهای دیجیتال عمل می کند. 
+به طور مرتب قیمت بیت کوین و اتریوم را بررسی می کند و از طریق ایمیل به کاربر اطلاع می دهد که قیمت آنها به زیر سطح بحرانی کاهش یابد. 
+با استفاده از سرویس‌های API رایگان مانند CoinGecko و پروتکل‌های ایمیل استاندارد، این اسکریپت راهی مناسب برای به‌روز ماندن در مورد حرکات بازار بدون بررسی دستی است.
 
-## Python Code
+## کد پایتون
 ```python
 import requests
 import smtplib
@@ -432,35 +429,32 @@ check_prices()
 </details>
 <hr>
 
-5. [warning Send SMS](CryptoTracker/warningSMS.py): The code uses the CoinGecko API to retrieve the current prices of Bitcoin and Ethereum.
-6. It compares these prices against predefined alert thresholds and, if the prices fall below these thresholds, sends an SMS alert using Twilio's messaging service.
-7. The SMS contains the current price and a warning that the price has dropped below the set limit.
+5. [هشدار پیامکی قیمت](CryptoTracker/warningSMS.py): این کد از CoinGecko API برای بازیابی قیمت‌های فعلی بیت‌کوین و اتریوم استفاده می‌کند. این قیمت‌ها را با آستانه‌های هشدار از پیش تعریف‌شده مقایسه می‌کند و اگر قیمت‌ها کمتر از این آستانه‌ها باشد، با استفاده از سرویس پیام‌رسانی Twilio یک هشدار SMS ارسال می‌کند. پیامک حاوی قیمت فعلی و یک هشدار می دهد که قیمت به زیر حد تعیین شده کاهش یافته است.
 
 <details>
-<summary>Python Aode Analysis</summary>
+<summary>تجزیه و تحلیل</summary>
 
- ### Detailed Analysis:
-This Python script monitors the prices of cryptocurrencies, specifically Bitcoin and Ethereum, and sends alerts via SMS when their prices fall below a certain threshold.
-The code leverages two key services: CoinGecko API for fetching real-time cryptocurrency prices and Twilio API for sending SMS alerts.
+### تحلیل تفصیلی:
+این اسکریپت پایتون قیمت ارزهای رمزنگاری شده، به ویژه بیت‌کوین و اتریوم را کنترل می‌کند و زمانی که قیمت‌های آن‌ها به زیر یک آستانه مشخص می‌رسد، هشدارهایی را از طریق پیامک ارسال می‌کند. این کد از دو سرویس کلیدی استفاده می‌کند: CoinGecko API برای دریافت قیمت‌های ارزهای دیجیتال در زمان واقعی و API Twilio برای ارسال پیامک. هشدارها
 
-### Key Components:
-1. <b>CoinGecko API:</b> The script interacts with the CoinGecko API to retrieve the current prices of Bitcoin and Ethereum in USD.
-2.  The URL https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd fetches the required price data in JSON format.
-3. <b>Twilio API:</b> The script uses the Twilio API to send SMS alerts to a specific phone number when the price of either Bitcoin or Ethereum drops below a predefined threshold. Twilio credentials, including TWILIO_SID, TWILIO_AUTH_TOKEN, and TWILIO_PHONE_NUMBER, must be replaced with actual account information for the SMS feature to work.
+### اجزای کلیدی:
+1. <b>CoinGecko API:</b> این اسکریپت با CoinGecko API تعامل می کند تا قیمت فعلی بیت کوین و اتریوم را به دلار بازیابی کند.
+2. URL https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd داده های قیمت مورد نیاز را در قالب JSON واکشی می کند.
+3. <b>Twilio API:</b> این اسکریپت از Twilio API برای ارسال هشدارهای پیامکی به شماره تلفن خاصی استفاده می‌کند، زمانی که قیمت بیت‌کوین یا اتریوم به زیر آستانه از پیش تعریف‌شده می‌رسد. اعتبارنامه های Twilio، از جمله TWILIO_SID، TWILIO_AUTH_TOKEN، و TWILIO_PHONE_NUMBER، باید با اطلاعات واقعی حساب جایگزین شوند تا ویژگی پیامک کار کند.
 
-### Code Breakdown:
-1. <b>Alert Parameters:</b> The script defines thresholds (ALERT_PRICE_BITCOIN = 30000 and ALERT_PRICE_ETHEREUM = 2000) that act as triggers for sending SMS alerts if prices fall below these values.
-2. <b>Twilio SMS Function:</b> The send_sms() function is responsible for sending an SMS using Twilio. It takes a message as input, which is then sent from the Twilio number to the recipient's phone number. The function prints the message ID (message.sid) after successful delivery.
-3. <b>Price Check Logic:</b> The check_prices_with_sms() function fetches the latest prices of Bitcoin and Ethereum from the CoinGecko API. After retrieving and parsing the JSON response, the prices are compared against the alert thresholds. If the prices are lower than the predefined values, the send_sms() function is called to send a notification.
-4. <b>Execution:</b> The script runs the check_prices_with_sms() function, continuously monitoring the cryptocurrency prices and sending alerts when necessary.
+### تفکیک کد:
+1. <b>پارامترهای هشدار:</b> اسکریپت آستانه‌هایی را تعریف می‌کند (ALERT_PRICE_BITCOIN = 30000 و ALERT_PRICE_ETHEREUM = 2000) که در صورت کاهش قیمت‌ها از این مقادیر، به عنوان محرک‌هایی برای ارسال هشدارهای پیامکی عمل می‌کنند.
+2. <b>عملکرد پیامک Twilio:</b> تابع send_sms() مسئول ارسال پیامک با استفاده از Twilio است. پیامی را به عنوان ورودی دریافت می کند که سپس از شماره Twilio به شماره تلفن گیرنده ارسال می شود. این تابع شناسه پیام (message.sid) را پس از تحویل موفقیت آمیز چاپ می کند.
+3. <b>منطق بررسی قیمت:</b> تابع check_prices_with_sms() آخرین قیمت بیت کوین و اتریوم را از CoinGecko API دریافت می کند. پس از بازیابی و تجزیه پاسخ JSON، قیمت ها با آستانه هشدار مقایسه می شوند. اگر قیمت ها کمتر از مقادیر از پیش تعریف شده باشد، تابع send_sms() برای ارسال اعلان فراخوانی می شود.
+4. <b>اجرا:</b> اسکریپت تابع check_prices_with_sms() را اجرا می کند، به طور مداوم قیمت ارزهای دیجیتال را زیر نظر دارد و در صورت لزوم هشدار ارسال می کند.
 
-### Use Cases:
-- Price Monitoring: This code can be used by cryptocurrency traders or enthusiasts who want to keep an eye on market prices without constantly checking them manually.
-- Real-time Alerts: The SMS alerts provide real-time updates, ensuring that users are notified as soon as prices drop below their specified limits, allowing for timely decisions.
+### موارد استفاده:
+- نظارت بر قیمت: این کد می تواند توسط معامله گران ارزهای دیجیتال یا علاقه مندانی که می خواهند قیمت های بازار را بدون بررسی دستی دائماً زیر نظر داشته باشند، مورد استفاده قرار گیرد.
+- هشدارهای بی‌درنگ: هشدارهای پیامکی به‌روزرسانی‌های بی‌درنگ را ارائه می‌کنند و اطمینان می‌دهند که به محض کاهش قیمت‌ها به کمتر از حد تعیین‌شده‌شان، به کاربران اطلاع داده می‌شود و امکان تصمیم‌گیری به موقع را فراهم می‌کند.
 
-This script is simple, yet effective for monitoring cryptocurrency prices and receiving alerts based on user-defined thresholds.
+این اسکریپت ساده و در عین حال برای نظارت بر قیمت ارزهای دیجیتال و دریافت هشدارها بر اساس آستانه های تعریف شده توسط کاربر موثر است.
 
-## Python Code
+## کد پایتون
 ```python
 from twilio.rest import Client
 import requests
@@ -516,7 +510,8 @@ check_prices_with_sms()
 </details>
 <hr>
 
-## License
+## مجوز
+
 
 MIT
 
