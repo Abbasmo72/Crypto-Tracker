@@ -1,6 +1,6 @@
 <div align="center">
 
-# Crypto Tracker
+# ارز دیجیتال 
 
 <img alt="Gif" src="https://media.tenor.com/y0SIaspW0E8AAAAM/cyberhornet-nest.gif" height="150px" width="500px">
 </div>
@@ -113,20 +113,19 @@
 
 <details>
 <summary>تجزیه و تحلیل</summary>
-The given Python script is designed to retrieve and display the current price of Bitcoin in USD. 
- The code utilizes the requests library to make a GET request to the CoinGecko API, a reliable source for cryptocurrency data.
+اسکریپت پایتون داده شده برای بازیابی و نمایش قیمت فعلی بیت کوین به دلار طراحی شده است. این کد از کتابخانه درخواست‌ها برای درخواست GET به CoinGecko API، یک منبع قابل اعتماد برای داده‌های ارزهای دیجیتال، استفاده می‌کند.
  
-## Breakdown of the Code:
-1. API Request: The script defines a function get_bitcoin_price() that sends an HTTP request to the CoinGecko API using the provided URL.
-2.  The URL includes a query for the price of Bitcoin in USD.
-3. Response Handling: Once the request is made, the response from the API is checked and parsed as JSON.
-4.  The script extracts the value of Bitcoin from the returned JSON object using the key 'bitcoin', followed by the nested key 'usd'.
-5. Display: After the price is retrieved, it is stored in the variable price and then printed in a formatted string, displaying the Bitcoin price with the dollar sign.
+##تفکیک کد:
+1. درخواست API: اسکریپت تابع get_bitcoin_price() را تعریف می کند که یک درخواست HTTP را با استفاده از URL ارائه شده به CoinGecko API ارسال می کند.
+2. URL شامل یک پرس و جو برای قیمت بیت کوین به دلار است.
+3. Response Handling: پس از انجام درخواست، پاسخ از API بررسی و به عنوان JSON تجزیه می شود.
+4. اسکریپت ارزش بیت کوین را از شی JSON برگشتی با استفاده از کلید «bitcoin» و به دنبال آن کلید تودرتو «usd» استخراج می کند.
+5. نمایش: پس از بازیابی قیمت، در قیمت متغیر ذخیره می شود و سپس در یک رشته فرمت شده چاپ می شود و قیمت بیت کوین را با علامت دلار نمایش می دهد.
  
-## Usage:
-This script is useful for getting real-time data on Bitcoin's price and can be integrated into a broader cryptocurrency monitoring tool. It allows users to stay updated on market fluctuations by fetching live data.
+## استفاده:
+این اسکریپت برای به دست آوردن اطلاعات لحظه ای قیمت بیت کوین مفید است و می تواند در یک ابزار نظارتی گسترده تر ارزهای دیجیتال ادغام شود. این به کاربران اجازه می دهد تا با واکشی داده های زنده از نوسانات بازار به روز بمانند.
 
-## Python Code
+## کد پایتون
 ```python
 import requests
 
@@ -151,30 +150,25 @@ print(f'Bitcoin price: ${price}')
 </details>
 <hr>
 
-2. [Bitcoin Analyzer lost one week](CryptoTracker/BitcoinAnalyzer_lost_one_week.py): This Python script retrieves Bitcoin price data for the past week using the CoinGecko API.
-3. It then extracts the price values and timestamps from the API response, converting the timestamps to a readable date format.
-4. Finally, it uses matplotlib to plot a line graph showing the Bitcoin price trends over the last seven days.
+2. [تجزیه و تحلیل بیت کوین هفه گذشته](CryptoTracker/BitcoinAnalyzer_lost_one_week.py): این اسکریپت پایتون داده‌های قیمت بیت کوین را در هفته گذشته با استفاده از CoinGecko API بازیابی می‌کند. سپس مقادیر قیمت و مُهرهای زمانی را از APIresponse استخراج می‌کند و مُهرهای زمانی را به قالب تاریخ قابل خواندن تبدیل می‌کند. در نهایت، از matplotlib برای رسم نمودار خطی که قیمت بیت‌کوین را نشان می‌دهد، استفاده می‌کند. روندهای هفت روز گذشته
 
 <details>
-<summary>Python Aode Analysis</summary>
-This Python script provides a visual representation of Bitcoin’s price fluctuations over the last week by fetching data from CoinGecko's API and plotting it using matplotlib.
- The script consists of three main parts: fetching the data, processing it, and visualizing the results.
+<summary>تجزیه و تحلیل</summary>
+This Python script provides a visual representation of Bitcoin’s price fluctuations over the last week by fetching data from CoinGecko's API and plotting it using matplotlib.The script consists of three main parts: fetching the data, processing it, and visualizing the results.
 
-## Fetching Data:
-The script sends a request to the CoinGecko API using the requests library. 
-It retrieves Bitcoin's market data over the past seven days with prices in USD. The API call's parameters specify the currency (vs_currency=usd) and the time range (days=7).
-Upon receiving the response, the data is extracted and converted into a Python dictionary using the .json() method, making it easy to access the relevant information.
+## واکشی داده ها:
+اسکریپت با استفاده از کتابخانه درخواست ها درخواستی را به CoinGecko API ارسال می کند. داده های بازار بیت کوین در هفت روز گذشته را با قیمت ها به دلار بازیابی می کند. پارامترهای فراخوانی API واحد پول (vs_currency=usd) و محدوده زمانی (روز=7) را مشخص می‌کند. پس از دریافت پاسخ، داده‌ها با استفاده از روش ()json استخراج و به فرهنگ لغت پایتون تبدیل می‌شوند و دسترسی به آن را آسان می‌کند.
 
-## Parsing the Data:
-The API response provides prices as a list of timestamp-price pairs. The timestamps are in Unix time (milliseconds), so they are converted into a human-readable format using datetime.fromtimestamp() while dividing by 1000 (to convert from milliseconds to seconds). The prices and their corresponding dates are stored in two separate lists: timestamps and values. These lists will be used to create the graph.
+## تجزیه داده ها:
+پاسخ API قیمت‌ها را به‌عنوان فهرستی از جفت‌های مهر زمان-قیمت ارائه می‌کند. مهرهای زمانی در زمان یونیکس (میلی ثانیه) هستند، بنابراین با استفاده از datetime.fromtimestamp() به یک قالب قابل خواندن توسط انسان تبدیل می شوند و در عین حال بر 1000 تقسیم می شوند (برای تبدیل از میلی ثانیه به ثانیه). قیمت‌ها و تاریخ‌های مربوط به آن‌ها در دو فهرست جداگانه ذخیره می‌شوند: مُهر زمانی و مقادیر. این لیست ها برای ایجاد نمودار استفاده خواهند شد.
 
-## Visualizing the Data:
-The script uses the matplotlib library to generate a line plot of Bitcoin’s price changes. The x-axis displays the dates, and the y-axis represents the price in USD. The plot is styled with circle markers to denote individual price points, and the xticks(rotation=45) function ensures the dates are properly rotated for clarity. A grid is also added to make the price points more readable, and plt.tight_layout() optimizes the display, ensuring all elements fit neatly within the plot area.
+## تجسم داده ها:
+این اسکریپت از کتابخانه matplotlib برای ایجاد نمودار خطی از تغییرات قیمت بیت کوین استفاده می کند. محور x تاریخ ها را نشان می دهد و محور y قیمت را به دلار آمریکا نشان می دهد. طرح با نشانگرهای دایره ای برای نشان دادن نقاط قیمت تکی استایل بندی شده است، و تابع xticks (چرخش=45) تضمین می کند که تاریخ ها به درستی برای وضوح چرخش می شوند. همچنین یک شبکه برای خوانایی بیشتر نقاط قیمت اضافه می‌شود، و ()plt.tight_layout نمایشگر را بهینه می‌کند و اطمینان می‌دهد که همه عناصر به طور منظم در منطقه طرح قرار می‌گیرند.
 
-## Use Cases:
-The script can be useful for cryptocurrency traders, analysts, or enthusiasts who want to monitor Bitcoin’s price trends over the past week. It provides a visual summary of price changes, making it easier to spot trends, spikes, or dips. Additionally, the code can be modified to track other cryptocurrencies or to extend the time period by adjusting the API parameters.
+## موارد استفاده:
+این اسکریپت می تواند برای معامله گران ارزهای دیجیتال، تحلیلگران یا علاقه مندانی که می خواهند روند قیمت بیت کوین را در هفته گذشته رصد کنند مفید باشد. این یک خلاصه بصری از تغییرات قیمت را ارائه می دهد و تشخیص روندها، جهش ها یا نزول ها را آسان تر می کند. علاوه بر این، کد را می توان برای ردیابی سایر ارزهای دیجیتال یا افزایش مدت زمان با تنظیم پارامترهای API تغییر داد.
 
-## Python code
+## کد پایتون
 ```python
 import requests
 import matplotlib.pyplot as plt
@@ -212,73 +206,70 @@ plt.show()
 </details>
 <hr>
 
-3. [Ether Tether Bitcoin Price](CryptoTracker/EtherTetherPrice.py): 
-This Python script fetches the current prices of Bitcoin, Ethereum, and Tether in USD from the CoinGecko API.
-It checks the response status and, if successful, extracts and displays the prices in a readable format.
-In case of an error, it prints the status code to indicate the issue with the API request.
+3. [قیمت بیت کوین اتر تتر](CryptoTracker/EtherTetherPrice.py): این اسکریپت پایتون قیمت‌های فعلی بیت‌کوین، اتریوم و تتر را به دلار از CoinGecko API دریافت می‌کند. وضعیت پاسخ را بررسی می‌کند و در صورت موفقیت‌آمیز، قیمت‌ها را در قالبی قابل خواندن استخراج و نمایش می‌دهد. در صورت بروز خطا، آن را چاپ می‌کند. کد وضعیت برای نشان دادن مشکل در درخواست API.
 
 <details>
-<summary>Python Aode Analysis</summary>
-The provided Python script effectively retrieves and displays the current prices of Bitcoin, Ethereum, and Tether in USD using the CoinGecko API. 
- Below is a detailed breakdown of the code, its functionality, and its potential applications.<br>
+<summary>تجزیه و تحلیل</summary>
+اسکریپت پایتون ارائه شده به طور موثر قیمت های فعلی بیت کوین، اتریوم و تتر را در USD با استفاده از CoinGecko API بازیابی و نمایش می دهد. در زیر به تفصیل کد، عملکرد و کاربردهای بالقوه آن اشاره شده است.<br>
  
-1. ibrary Imports:
- The script starts by importing two essential libraries: requests and json.
- The requests library is used to send HTTP requests to external APIs, while the json library is crucial for handling the JSON format returned by the API.
+1. واردات ibrary:
+ اسکریپت با وارد کردن دو کتابخانه ضروری شروع می‌شود: درخواست‌ها و json. کتابخانه درخواست‌ها برای ارسال درخواست‌های HTTP به APIهای خارجی استفاده می‌شود، در حالی که کتابخانه json برای مدیریت فرمت JSON بازگردانده شده توسط API بسیار مهم است.
 
-2. Function Definition:
- The core functionality of the script is encapsulated in the get_crypto_prices() function. This promotes modular programming, allowing for easier maintenance and testing.
+2. تعریف تابع:
+ عملکرد اصلی اسکریپت در تابع get_crypto_prices() کپسوله شده است. این برنامه‌نویسی مدولار را ارتقا می‌دهد و امکان نگهداری و آزمایش آسان‌تر را فراهم می‌کند.
 
-3. API Endpoint:
- The URL defined in the script points to the CoinGecko API endpoint, specifically designed to fetch current prices for multiple cryptocurrencies in a specified currency (in this case, USD).
- By requesting prices for Bitcoin, Ethereum, and Tether, the script focuses on three major players in the cryptocurrency market.
+3. نقطه پایانی API:
+ URL تعریف شده در اسکریپت به نقطه پایانی CoinGecko API اشاره می کند، که به طور خاص برای واکشی قیمت های فعلی برای چندین ارز دیجیتال در یک ارز مشخص (در این مورد، USD) طراحی شده است.
+ با درخواست قیمت بیت کوین، اتریوم و تتر، این اسکریپت بر روی سه بازیگر اصلی در بازار ارزهای دیجیتال تمرکز دارد.
 
-4. Sending the Request:
- The code sends a GET request to the defined API URL using requests.get(url). This initiates communication with the CoinGecko server to retrieve the latest price data.
+4. ارسال درخواست:
+ کد یک درخواست GET را با استفاده از requests.get(url) به URL API تعریف شده ارسال می کند. این ارتباط با سرور CoinGecko را برای بازیابی آخرین داده های قیمت آغاز می کند.
 
-5. Response Status Checking:
- The script checks the response status code using response.status_code. A status code of 200 indicates a successful request, while any other status code indicates an error in fetching  data.
- This error-handling mechanism is crucial for robust applications, ensuring that the user is informed about any issues.
+5. بررسی وضعیت پاسخ:
+ اسکریپت کد وضعیت پاسخ را با استفاده از answer.status_code بررسی می کند. کد وضعیت 200 نشان دهنده درخواست موفقیت آمیز است، در حالی که هر کد وضعیت دیگر نشان دهنده خطا در واکشی داده ها است.
+ این مکانیسم رسیدگی به خطا برای برنامه های کاربردی قوی بسیار مهم است و اطمینان می دهد که کاربر در مورد هر گونه مشکلی مطلع است.
 
-6. JSON Data Parsing:
- When the response is successful, the script converts the JSON data into a Python dictionary using json.loads(response.text).
- This step is essential for extracting specific values (the prices of the cryptocurrencies) from the structured JSON response.
+6. تجزیه داده های JSON:
+ هنگامی که پاسخ موفقیت آمیز بود، اسکریپت داده های JSON را با استفاده از json.loads (response.text) به یک فرهنگ لغت پایتون تبدیل می کند.
+ این مرحله برای استخراج مقادیر خاص (قیمت ارزهای دیجیتال) از پاسخ ساختاریافته JSON ضروری است.
 
-7. Data Extraction:
- The script extracts the prices of Bitcoin, Ethereum, and Tether from the parsed JSON dictionary. Each price is stored in a separate variable for ease of use and clarity.
+7. استخراج داده ها:
+ این اسکریپت قیمت بیت کوین، اتریوم و تتر را از فرهنگ لغت تجزیه شده JSON استخراج می کند. هر قیمت برای سهولت استفاده و وضوح در یک متغیر جداگانه ذخیره می شود.
 
-8. Displaying Prices:
- The extracted prices are then printed to the console in a user-friendly format. This output allows users to quickly see the current market prices of these cryptocurrencies.
+8. نمایش قیمت ها:
+ سپس قیمت‌های استخراج‌شده در قالبی کاربرپسند در کنسول چاپ می‌شوند. این خروجی به کاربران اجازه می دهد تا به سرعت قیمت های فعلی بازار این ارزهای دیجیتال را مشاهده کنند.
 
-9. Potential Enhancements:
- Future improvements could include implementing additional error handling for network-related issues or JSON decoding errors.
- The script could also be enhanced to allow users to input their preferred cryptocurrencies or currencies for conversion, increasing its versatility.
+9. بهبودهای بالقوه:
+ پیشرفت‌های آینده می‌تواند شامل اجرای مدیریت خطای اضافی برای مسائل مربوط به شبکه یا خطاهای رمزگشایی JSON باشد.
+ این اسکریپت همچنین می تواند بهبود یابد تا به کاربران امکان دهد ارزهای رمزنگاری شده یا ارزهای مورد علاقه خود را برای تبدیل وارد کنند و تطبیق پذیری آن افزایش یابد.
 
-10. Use Cases:
- This script can be utilized by cryptocurrency traders and investors for quick access to current prices, aiding in making informed trading decisions. 
- It can also serve as a foundational component for more complex applications, such as portfolio management tools or trading bots.
+10. موارد استفاده:
+ این اسکریپت می تواند توسط معامله گران ارزهای دیجیتال و سرمایه گذاران برای دسترسی سریع به قیمت های فعلی مورد استفاده قرار گیرد و به تصمیم گیری های تجاری آگاهانه کمک کند. 
+ همچنین می تواند به عنوان یک مؤلفه اساسی برای برنامه های پیچیده تر، مانند ابزارهای مدیریت پورتفولیو یا ربات های معاملاتی، عمل کند.
 
-11. Integration Opportunities:
- The functionality of this script can be integrated into websites or mobile applications to provide users with real-time cryptocurrency pricing data.
- It could also be incorporated into data analysis pipelines for cryptocurrency market research or historical trend analysis.
+11. فرصت های یکپارچه سازی:
+ عملکرد این اسکریپت را می توان در وب سایت ها یا برنامه های تلفن همراه ادغام کرد تا داده های قیمت گذاری ارزهای دیجیتال را در زمان واقعی به کاربران ارائه دهد.
+ همچنین می تواند در خطوط لوله تجزیه و تحلیل داده ها برای تحقیقات بازار ارزهای دیجیتال یا تحلیل روند تاریخی گنجانده شود.
 
-12. Limitations:
- The script only fetches the latest prices and does not store historical data, which may be a limitation for users seeking to analyze price trends over time.
- Additionally, the API has rate limits, which could restrict the frequency of requests if used excessively.
+12. محدودیت ها:
+ این اسکریپت فقط آخرین قیمت‌ها را دریافت می‌کند و داده‌های تاریخی را ذخیره نمی‌کند، که ممکن است محدودیتی برای کاربرانی باشد که به دنبال تجزیه و تحلیل روند قیمت در طول زمان هستند.
+ علاوه بر این، API دارای محدودیت‌های نرخ است که در صورت استفاده بیش از حد می‌تواند تعداد درخواست‌ها را محدود کند.
 
-13. Conclusion:
- In summary, this script serves as a practical and effective tool for accessing real-time cryptocurrency prices using the CoinGecko API.
- Its clear structure and modular design make it easy to understand and extend, providing a solid foundation for further development.
+13. نتیجه گیری:
+ به طور خلاصه، این اسکریپت به عنوان یک ابزار کاربردی و موثر برای دسترسی به قیمت ارزهای دیجیتال با استفاده از CoinGecko API عمل می کند.
+ ساختار شفاف و طراحی مدولار آن، درک و گسترش آن را آسان می کند و پایه ای محکم برای توسعه بیشتر فراهم می کند.
 
-## Libraries and Data Source
-#### Libraries Used:
-requests: For sending HTTP requests to the CoinGecko API.
-json: For parsing and manipulating JSON data received from the API.
-#### Data Source:
-The script fetches price data from the CoinGecko API, specifically using the endpoint:<br>
+## کتابخانه ها و منبع داده
+
+#### کتابخانه های مورد استفاده:
+درخواست ها: برای ارسال درخواست های HTTP به CoinGecko API.
+json: برای تجزیه و دستکاری داده های JSON دریافت شده از API.
+
+#### منبع داده:
+این اسکریپت داده های قیمت را از CoinGecko API، به طور خاص با استفاده از نقطه پایانی واکشی می کند:<br>
 https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether&vs_currencies=usd.
 
-## Python Code
+## کد پایتون
 ```python
 import requests
 import json
