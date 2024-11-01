@@ -107,9 +107,7 @@ The article I provided on cryptocurrency and its significance was written based 
 
 ## Getting Started
 
-1. [Bitcoin](CryptoTracker/Bitcoin.py): This Python script retrieves the current price of Bitcoin in USD using the CoinGecko API.
-2. It sends an HTTP GET request to the API, parses the JSON response, and extracts the Bitcoin price.
-3.  Finally, it displays the Bitcoin price in USD using a formatted print statement.
+1. [Bitcoin](CryptoTracker/Bitcoin.py): This Python script retrieves the current price of Bitcoin in USD using the CoinGecko API. It sends an HTTP GET request to the API, parses the JSON response, and extracts the Bitcoin price.Finally, it displays the Bitcoin price in USD using a formatted print statement.
 
 <details>
 <summary>Python Aode Analysis</summary>
@@ -151,9 +149,7 @@ print(f'Bitcoin price: ${price}')
 </details>
 <hr>
 
-2. [Bitcoin Analyzer lost one week](CryptoTracker/BitcoinAnalyzer_lost_one_week.py): This Python script retrieves Bitcoin price data for the past week using the CoinGecko API.
-3. It then extracts the price values and timestamps from the API response, converting the timestamps to a readable date format.
-4. Finally, it uses matplotlib to plot a line graph showing the Bitcoin price trends over the last seven days.
+2. [Bitcoin Analyzer lost one week](CryptoTracker/BitcoinAnalyzer_lost_one_week.py): This Python script retrieves Bitcoin price data for the past week using the CoinGecko API.It then extracts the price values and timestamps from the API response, converting the timestamps to a readable date format.Finally, it uses matplotlib to plot a line graph showing the Bitcoin price trends over the last seven days.
 
 <details>
 <summary>Python Aode Analysis</summary>
@@ -314,10 +310,7 @@ get_crypto_prices()
 </details>
 <hr>
 
-4. [warning Send Email](CryptoTracker/warningE-mail.py): 
-This Python script retrieves the current prices of Bitcoin and Ethereum using the CoinGecko API.
-If these prices fall below specified thresholds, the program sends email alerts to a predefined recipient.
-The script uses the requests library for API calls and smtplib for sending emails through Gmail’s SMTP server.
+4. [warning Send Email](CryptoTracker/warningE-mail.py): This Python script retrieves the current prices of Bitcoin and Ethereum using the CoinGecko API.If these prices fall below specified thresholds, the program sends email alerts to a predefined recipient.The script uses the requests library for API calls and smtplib for sending emails through Gmail’s SMTP server.
 
 <details>
 <summary>Python Aode Analysis</summary>
@@ -441,9 +434,7 @@ check_prices()
 </details>
 <hr>
 
-5. [warning Send SMS](CryptoTracker/warningSMS.py): The code uses the CoinGecko API to retrieve the current prices of Bitcoin and Ethereum.
-6. It compares these prices against predefined alert thresholds and, if the prices fall below these thresholds, sends an SMS alert using Twilio's messaging service.
-7. The SMS contains the current price and a warning that the price has dropped below the set limit.
+5. [warning Send SMS](CryptoTracker/warningSMS.py): The code uses the CoinGecko API to retrieve the current prices of Bitcoin and Ethereum.It compares these prices against predefined alert thresholds and, if the prices fall below these thresholds, sends an SMS alert using Twilio's messaging service.The SMS contains the current price and a warning that the price has dropped below the set limit.
 
 <details>
 <summary>Python Aode Analysis</summary>
