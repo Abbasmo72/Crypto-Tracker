@@ -48,7 +48,7 @@ Traditional remittance services are often slow and expensive, with fees eating i
 <details>
 <summary>More</summary>
 
- ### Challenges and Risks
+### Challenges and Risks
 Despite their advantages, cryptocurrencies face several challenges. One of the primary concerns is volatility. 
 The prices of cryptocurrencies like Bitcoin can fluctuate wildly within a short period, making them risky as a store of value or medium of exchange. 
 This volatility has prompted criticism from some economists who argue that cryptocurrencies are too unstable to serve as a reliable form of currency.
